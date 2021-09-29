@@ -8,9 +8,9 @@
 
 ### Features
 
-- [ ] Cadastro de produto
-- [ ] Cadastro de contato
-- [ ] Envio de Email
+- [x] Cadastro de produto
+- [x] Cadastro de contato
+- [x] Envio de Email
 - [ ] Produção Heroku
 
 MIT License
