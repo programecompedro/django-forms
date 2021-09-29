@@ -1,9 +1,10 @@
 from django.core.mail import message
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import ContatoForm, ProdutoForm
 from django.contrib import messages
 from .models import Produto
-# Create your views here.
+
+
 def index(request):
     template='index.html'
     produtos = Produto.objects.all()
@@ -32,17 +33,20 @@ def contato(request):
 
 def produto(request):
     template='produto.html' 
-
-    if request.method == "POST":
-        form = ProdutoForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()            
-            messages.success(request, 'Formulário salvo com sucesso.')
-            form = ProdutoForm()
+    if str(request.user) != 'AnonymousUser':
+    
+        if request.method == "POST":
+            form = ProdutoForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()            
+                messages.success(request, 'Formulário salvo com sucesso.')
+                form = ProdutoForm()
+            else:
+                messages.error(request, 'Erro ao salvar produto')
         else:
-            messages.error(request, 'Erro ao salvar produto')
+            form = ProdutoForm()
     else:
-        form = ProdutoForm()
+        return redirect("index")
 
     context = {
         "form": form
