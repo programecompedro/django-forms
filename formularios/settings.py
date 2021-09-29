@@ -134,3 +134,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Configurações de E-mail
+
+#Esta linha é ativa quando não existe servidor de email 
+EMAIL_BACKEND = 'django.core.email.backends.console.EmailBackend'
+
+#Caso aja servidor de email, é comentado a linha acima e descomentada a linha abaixo:
+"""
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = 'no-reply@seudominio.com.br'
+EMAIL_PORT = 587
+EMAIL_USER_TSL = True
+EMAIL_HOST_PASSWORD = 'sua-senha'
+"""
