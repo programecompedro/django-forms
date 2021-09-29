@@ -1,4 +1,3 @@
-from core.views import produto
 from django.db import models
 from stdimage.models import StdImageField
 
