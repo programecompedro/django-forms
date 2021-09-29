@@ -1,5 +1,6 @@
+from django.core.mail import message
 from django.shortcuts import render
-from .forms import ContatoForm
+from .forms import ContatoForm, ProdutoForm
 from django.contrib import messages
 # Create your views here.
 def index(request):
@@ -26,4 +27,23 @@ def contato(request):
 
 def produto(request):
     template='produto.html' 
-    return render(request, template)
+
+    if request.method == "POST":
+        form = ProdutoForm(request.POST, request.FILES)
+        if form.is_valid():
+            prod = form.save(commit=False)
+            print(f'Nome: {prod.nome}')
+            print(f'preco: {prod.preco}')
+            print(f'estoque: {prod.estoque}')
+            print(f'imagem: {prod.imagem}')
+            messages.success(request, 'Formulário salvo com sucesso.')
+            form = ProdutoForm()
+        else:
+            messages.error(request, 'Erro ao salvar produto')
+    else:
+        form = ProdutoForm()
+
+    context = {
+        "form": form
+    }
+    return render(request, template, context)
