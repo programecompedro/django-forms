@@ -10,17 +10,33 @@
     {%bootstrap_css%}
 </head>
 <body>
-    <div class = "container">
+    <div class="row d-block mx-auto text-center w-50 mt-4 pt-4">
+        <nav class="w-50 d-flex justify-content-between">
+            <a class="btn btn-info" href="/">
+                Home
+            </a>
+            <a class="btn btn-info" href="/produto/">
+                Produto
+            </a>
+            <a class="btn btn-info" href="/contato/">
+                Contato
+            </a>
+        </nav>
+    </div>
+    <div class = "container mt-4 pt-4 w-50">
         <h1>Contato</h1>
         {%bootstrap_messages%}
 
-        <form class="form" autocomplete="off" method="POST" action='{% url 'contato' %}'>
+        <form class="form " autocomplete="off" method="POST" action='{% url 'contato' %}'>
             {% csrf_token %}
             {% bootstrap_form form %}
             {% buttons %}
-                <button type="submit" class="btn btn-success">
-                    Enviar mensagem
-                </button>
+                <div class="d-flex flex-row-reverse">
+
+                    <button type="submit" class="btn btn-success">
+                        Enviar mensagem
+                    </button>
+                </div>
             {% endbuttons %}
         </form>
     </div>
