@@ -31,11 +31,7 @@ def produto(request):
     if request.method == "POST":
         form = ProdutoForm(request.POST, request.FILES)
         if form.is_valid():
-            prod = form.save(commit=False)
-            print(f'Nome: {prod.nome}')
-            print(f'preco: {prod.preco}')
-            print(f'estoque: {prod.estoque}')
-            print(f'imagem: {prod.imagem}')
+            form.save()            
             messages.success(request, 'Formulário salvo com sucesso.')
             form = ProdutoForm()
         else:
