@@ -2,10 +2,15 @@ from django.core.mail import message
 from django.shortcuts import render
 from .forms import ContatoForm, ProdutoForm
 from django.contrib import messages
+from .models import Produto
 # Create your views here.
 def index(request):
     template='index.html'
-    return render(request, template)
+    produtos = Produto.objects.all()
+    context={
+        "produtos":produtos
+    }
+    return render(request, template, context)
 
 def contato(request):
     template='contato.html'
