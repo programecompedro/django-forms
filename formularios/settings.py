@@ -18,7 +18,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #usando pgsql no heroku
-DATASASES = {
+DATABASES = {
     'default': dj_database_url.config()
 }
 
