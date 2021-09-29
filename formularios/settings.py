@@ -138,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Configurações de E-mail
 
 #Esta linha é ativa quando não existe servidor de email 
-EMAIL_BACKEND = 'django.core.email.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #Caso aja servidor de email, é comentado a linha acima e descomentada a linha abaixo:
 """
