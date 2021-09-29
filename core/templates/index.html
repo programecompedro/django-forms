@@ -39,6 +39,7 @@
                 </tr>
             </thead>
             <tbody>
+            {% if produtos %}
                 {% for produto in produtos %}
                     <tr>
                         <td scope="row">{{produto.id}}</td>
@@ -62,6 +63,12 @@
                         </div>
                     </div>
                 {% endfor %}
+            {% else %}
+                <tr>
+                    <td scope="row">Não existe produtos cadastrados, faça login e cadastre</td>
+                </tr>
+            {% endif %}
+                
             </tbody>
         </table>
     </div>
